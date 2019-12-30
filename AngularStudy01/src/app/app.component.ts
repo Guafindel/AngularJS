@@ -1,10 +1,22 @@
+// 앵귤러에서는 기존의 javascript에서 <script src="파일.js"/> 와 동일한 기능을 한다고
+// 생각하자.
 import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
+
+  // 기존의 templateUrl을 주석처리하고(즉 app.component.html에서 작성한 모든 것을
+  // 반영하지 않고), 새롭게 template를 작성하면 이곳에서 작성한 html로 모든것이 적용되는
+  // 것을 확인할 수 있다. 즉 앵귤러에서 화면을 구성하는 것은 컴포넌트이다.
+  // '앵귤러는 컴포넌트에 의해서 화면이 구성된다.'
   templateUrl: './app.component.html',
+  //template: '<div>무엇이</div><div>이것이 title : {{title}}</div>',
+
   styleUrls: ['./app.component.css']
 })
+
+// export를 적용하지 않는다면 코드는 내부에서만 적용되기 때문에 의미없이 오류만 내보낸다.
+// 일단은 export는 각종 메소드 변수등을 묶는 꾸러미라는 개념으로 이해하자
 export class AppComponent {
   title = 'AngularStudy01';
 

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div id="header">
+      <div id="nav">
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Active</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <br />
+    <div class="container" id="body">
+      <!-- 앞서 선언된 title 변수 -->
+
+      <h1 class="display-1">{{ title }}</h1>
+      <br />
+
+      <table class="table table-light">
+        <thead>
+          <tr>
+            <th>Number</th>
+            <th>Name</th>
+            <th>Day</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <!-- list변수의 크기가 0보다 크면 반복문을 실행한다.
+          ts파일에 list에 담은 변수가 배열로 되어있었다.
+          ngFor가 동작하면 해당 노드(html 태그)가 같이 반복되어 생성된다. -->
+          <tr *ngFor="let item of list">
+            <td>{{ item[0] }}</td>
+            <td>{{ item[1] }}</td>
+            <td>{{ item[2] }}</td>
+          </tr>
+
+        </tbody>
+      </table>
+      <br />
+
+      <div *ngIf="list.length > 0">
+        <p>ngFor를 ngIf로 감싸지 않아도 ngFor 자체에는 0을 초과해야만 기능한다.</p>
+      </div>
+      <div *ngIf="list.length == 0">
+        <p>배열크기가 0이라면 보일것이라고 예상한다. 이를 확인하기 위해서 ts파일로 들어가 생성자에서 메소드 설정하는 부분을 주석처리해보자.</p>
+      </div>
+
+      <div class="btn-group float-right" role="group" aria-label="Button group">
+        <button class="btn btn-dark" type="button" (click)='goToServerAndGetData("left");'>Left</button>
+        <button class="btn btn-dark" type="button" (click)="goToServerAndGetData('right');">Right</button>
+      </div>
+    </div>
+    <div id="footer"></div>
+  </div>
+</body>
+
+</html>

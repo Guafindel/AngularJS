@@ -16,19 +16,47 @@
 
 <!-- ng-app란 Angular를 시작 선언하는 명령으로 해당 태그에 명령을 내리면 그 이후로 angular 디렉티브를 찾는다. -->
 
-<body ng-app="todo" ng-controller="TodoCtrl">
+<body ng-app="todo">
     <div class="container-fluid">
         <div class="container">
             <h1 class="display-1">Todo</h1>
+            <br>
+            <div ng-controller="TodoCtrl">
+                <ul class="list-unstyled">
+                    <li ng-repeat="todo in todos">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <input type="checkbox" ng-model="todo.completed">
+                                </div>
+                            </div>
+                            <input type="text" class="form-control" ng-model="todo.title" placeholder="item">
+                            <date>{{ todo.createdAt }}</date>
+                        </div>
+                    </li>
+                </ul>
+            </div>
 
-            <input type="text" ng-model="todo.title">
-            <input type="checkbox" name="" id="" ng-model="todo.completed">
-            <date>{{ todo.createdAt }}</date>
-
+            <br>
+            <div ng-controller="hero">
+                <ul class="list-unstyled">
+                    <li ng-repeat="todo in heroes">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <input type="checkbox" ng-model="todo.name">
+                                </div>
+                            </div>
+                            <input type="text" class="form-control" ng-model="todo.title" placeholder="item">
+                            <date>{{ todo.level }}</date>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            </divng-app="todo">
         </div>
-    </div>
 
 
-</body>
+</body ng-app="todo">
 
 </html>

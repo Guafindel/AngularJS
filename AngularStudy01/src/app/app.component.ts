@@ -32,6 +32,8 @@ export class AppComponent {
     createdAt: Date.now()
   });
 
+  private list: Array<any> = new Array();
+
   // public todo : any = new Array('요가수련',  Date.now);
 
   public all : any = new Array();

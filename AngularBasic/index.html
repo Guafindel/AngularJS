@@ -11,52 +11,34 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-    <script src="script.js"></script>
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <script src="app.js"></script>
+    <script src="service.js"></script>
+    <script src="controller.js"></script>
+    <script src="directive.js"></script>
+    
 </head>
 
 <!-- ng-app란 Angular를 시작 선언하는 명령으로 해당 태그에 명령을 내리면 그 이후로 angular 디렉티브를 찾는다. -->
 
 <body ng-app="todo">
     <div class="container-fluid">
-        <div class="container">
-            <h1 class="display-1">Todo</h1>
+        <div class="container" ng-controller="TodoCtrl">
+            <todo-title></todo-title>
             <br>
-            <div ng-controller="TodoCtrl">
+            <todo-form></todo-form>
+            <!-- <pre>{{todoForm | json}}</pre> -->
+            <div>
                 <ul class="list-unstyled">
-                    <li ng-repeat="todo in todos">
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <div class="input-group-text">
-                                    <input type="checkbox" ng-model="todo.completed">
-                                </div>
-                            </div>
-                            <input type="text" class="form-control" ng-model="todo.title" placeholder="item">
-                            <date>{{ todo.createdAt }}</date>
-                        </div>
+                    <li ng-repeat="todo in todos | filter:statusFilter">
+                        <todo-item></todo-item>
                     </li>
                 </ul>
+                <todo-filters></todo-filters>
             </div>
-
             <br>
-            <div ng-controller="hero">
-                <ul class="list-unstyled">
-                    <li ng-repeat="todo in heroes">
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <div class="input-group-text">
-                                    <input type="checkbox" ng-model="todo.name">
-                                </div>
-                            </div>
-                            <input type="text" class="form-control" ng-model="todo.title" placeholder="item">
-                            <date>{{ todo.level }}</date>
-                        </div>
-                    </li>
-                </ul>
-            </div>
             </divng-app="todo">
         </div>
-
-
 </body ng-app="todo">
 
 </html>

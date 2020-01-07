@@ -2,23 +2,6 @@ angular.module('todo').controller('TodoCtrl', function ($scope, todoStorage) {
 
     $scope.todos = todoStorage.get();
 
-    // $scope.todos = [{
-    //         title: '요가 수행',
-    //         completed: false,
-    //         createdAt: Date.now()
-    //     },
-    //     {
-    //         title: '앵귤러 학습',
-    //         completed: false,
-    //         createdAt: Date.now()
-    //     },
-    //     {
-    //         title: '게임 하기',
-    //         completed: true,
-    //         createdAt: Date.now()
-    //     }
-    // ];
-
     $scope.remove = function (todo) {
 
         // find todo index in todos

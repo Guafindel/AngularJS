@@ -3,7 +3,7 @@ angular.module('todo').factory('todoStorage', function () {
         todos: [{
                 title: 'Java',
                 completed: false,
-                createdAt: Date.now()
+                createdAt: 1578378100166
             },
             {
                 title: 'Javascript',

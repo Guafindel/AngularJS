@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Calendar</title>
+</head>
+
+<body>
+    <div class="modal modal-datepicker close-event" style="z-index:2000;">
+        <div class="modal-dialog" style="height:330px;">
+            <div class="modal-content">
+                <button type="button" class="close" ng-click="close();"></button>
+                <div class="modal-header">
+                    <h4>날짜검색</h4>
+                </div>
+                <div class="modal-datepicker-header">
+                    <a href="javascript:void(0);" class="prev-year" ng-click="fnCalendarWrite('yearM')"></a>
+                    <a href="javascript:void(0);" class="prev-month" ng-click="fnCalendarWrite('monthM')"></a>
+                    <a href="javascript:void(0);" class="ym">{{date.year}}년 {{date.month}}월</a>
+                    <a href="javascript:void(0);" class="next-year" ng-click="fnCalendarWrite('yearP')"></a>
+                    <a href="javascript:void(0);" class="next-month" ng-click="fnCalendarWrite('monthP')"></a>
+                </div>
+                <table class="modal-datepicker-table" id="calendar">
+                    <thead>
+                        <tr>
+                            <th>일</th>
+                            <th>월</th>
+                            <th>화</th>
+                            <th>수</th>
+                            <th>목</th>
+                            <th>금</th>
+                            <th>토</th>
+                        </tr>
+                    </thead>
+                    <tbody compile="calendarHtml.calendar" id="calendarTable" style=""></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

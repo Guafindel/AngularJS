@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="page">
+    
+        <!-- header -->
+        <ng-include src="'/html/common/saHeader.html'" onload="title='방문일정'"></ng-include>
+        <!-- //header -->
+        
+        <!-- contents -->
+        <div id="contents">
+            <div class="sec">
+                <div class="calendar-wrap">
+                    <div class="date-pick-box">
+                        <button type="button" class="prev-y" ng-click="fnCalendarWrite('yearM')"><span>이전 년</span></button>
+                        <button type="button" class="prev-m" ng-click="fnCalendarWrite('monthM')"><span>이전 월</span></button>
+                        <span class="ele-inp">
+							<input type="text" value="2019-10" ng-model="date.year +'-'+date.month"  />
+							<button type="button" class="calendar"><span>달력보기</span></button>
+						</span>
+                        <button type="button" class="next-m" ng-click="fnCalendarWrite('monthP')"><span>다음 월</span></button>
+                        <button type="button" class="next-y" ng-click="fnCalendarWrite('yearP')"><span>다음 년</span></button>
+                    </div>
+                    <div class="state-box clear">
+                        <span class="pack blue-ty1 fl">오전</span>
+                        <span class="pack red-ty1 fl">오후</span>
+                        <span class="pack line-ty1 fr" ng-click="selToday()">오늘</span>
+                    </div>
+                    <div class="calendar-box">
+                        <table id="calendar">
+                            <thead>
+                                <tr>
+                                    <th scope="col" class="sun">일</th>
+                                    <th scope="col">월</th>
+                                    <th scope="col">화</th>
+                                    <th scope="col">수</th>
+                                    <th scope="col">목</th>
+                                    <th scope="col">금</th>
+                                    <th scope="col" class="sat">토</th>
+                                </tr>
+                            </thead>
+                               <tbody compile="calendarHtml.calendar" id="calendarTable" style="">
+                                    <tr>
+                                        <td></td>
+                                            className = "active sun or sat"
+                                        
+                                    </tr>
+                                </tbody>
+                       	</table>
+                    </div>
+               	</div>
+           	</div>
+        </div>
+   	</div>
+</body>
+</html>

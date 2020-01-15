@@ -11,15 +11,15 @@ angular.module('todo').directive('todoItem', function () {
              '<div class="input-group mb-3">' +
                  '<div class="input-group-prepend">' +
                      '<div class="input-group-text">' +
-                         '<input type="checkbox" ng-model="todo.completed">' +
+                         '<input type="checkbox" ng-model="todo.completed" ng-click="update()">' +
                      '</div>' +
                  '</div>' +
-                 '<input type="text" class="form-control" ng-model="todo.title" placeholder="item">' +
+                 '<input type="text" class="form-control" ng-model="todo.title" placeholder="item" ng-blur="update()">' +
                  '<span class="input-group-btn">' +
                     '<button class="btn btn-danger" type="button" ng-click="remove(todo)">삭제</button>' +
                  '</span>' +
              '</div>' +
-             '<date>{{ todo.createdAt | date:"HH: mm: ss"}}</date>'
+             '<date>{{ todo.createdAt | date:"yyyy-MM-dd HH: mm: ss"}}</date>'
     }
 });
 

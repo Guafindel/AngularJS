@@ -19,6 +19,15 @@
         <div class="container" ng-controller="TestCtrl">
             <h1 class="display-4">{{ text }}</h1>
             <br>
+            <!-- <span ng-click="timeFormatter('13:30')">이곳</span>
+            <br>
+            <span ng-click="getTime('2020-01-01 13:30')">이곳</span>
+            <br>
+            <span ng-show="cutStringDate('2020-01-01 13:30')">여기</span>
+            <br>
+            <span>{{getTime('2020-01-01 17:30') | date:'HH:mm' }} 이렇게 변환</span>
+            <br> -->
+            <span ng-click="checkYear()">년도 체크</span>
             <span class="day"></span>
             <div class="schedule">
                 <div ng-repeat="list in dateList">

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+</head>
+
+<body>
+
+    <div ng-app="myApp" ng-controller="myCtrl">
+
+        <b>Price : {{price}}</b><br />
+
+        <span ng-repeat="optionKey in optionProperties">
+            {{optionKey}} :
+            <select ng-if="$index === 0" ng-model="selectedOptions[$index]"
+                ng-options="option as option.name for option in options" ng-change="onChange(selectedOptions[$index])">
+            </select>
+
+            <select ng-if="$index !== 0" ng-model="selectedOptions[$index]"
+                ng-options="option as option.name for option in selectedOptions[$index-1].children"
+                ng-change="onChange(selectedOptions[$index])">
+            </select>
+        </span>
+        <hr />
+        <b>$scope.optionData : </b> {{optionData}} <br />
+        <b>$scope.selectedOptions : </b> {{selectedOptions}}
+
+    </div>
+
+    <script>
+        var app = angular.module('myApp', []);
+        app.controller('myCtrl', function ($scope) {
+
+            $scope.selectedOptions = {};
+            $scope.optionData = [];
+
+            $scope.optionProperties = ["Character", "Color"];
+            $scope.options = [{
+                    "name": "Sally",
+                    "children": [{
+                            "name": "red",
+                            "children": [],
+                            "value": {
+                                "price": 600
+                            }
+                        },
+                        {
+                            "name": "yellow",
+                            "children": [],
+                            "value": {
+                                "price": 800
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Brown",
+                    "children": [{
+                            "name": "red",
+                            "children": [],
+                            "value": {
+                                "price": 300
+                            }
+                        },
+                        {
+                            "name": "yellow",
+                            "children": [],
+                            "value": {
+                                "price": 400
+                            }
+                        }
+                    ]
+                }
+            ];
+
+            $scope.onChange = function (option) {
+                console.log(option);
+                if (option.value) {
+                    $scope.price = option.value.price;
+
+                    var saveOption = [];
+                    for (var idx in $scope.optionProperties) {
+                        saveOption.push({
+                            key: $scope.optionProperties[idx],
+                            value: $scope.selectedOptions[idx].name
+                        });
+                    }
+
+                    $scope.optionData = saveOption;
+                }
+            };
+        });
+    </script>
+
+</body>
+
+</html>
+<!-- 출처:[AngularJS] ng-options 와 ng-change를 이용한 Dynamic Select Option 구현하기 -->

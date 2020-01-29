@@ -13,21 +13,40 @@
     <script src="index.js"></script>
     <title>Document</title>
 </head>
+<style>
+    .txt-color1 {
+        background-color: aqua;
+        text-shadow: coral;
+    }
+    .txt-color2 {
+        background-color: coral;
+        text-shadow: cornflowerblue;
+    }
+</style>
 
 <body ng-app="test">
     <div class="container-fluid">
         <div class="container" ng-controller="TestCtrl">
             <h1 class="display-4">{{ text }}</h1>
             <br>
-            <!-- <span ng-click="timeFormatter('13:30')">이곳</span>
+            <span ng-click="timeFormatter('1230')">이곳</span>
             <br>
-            <span ng-click="getTime('2020-01-01 13:30')">이곳</span>
+            <span ng-click="convertTime('09:30')">컨버트타임</span>
+
+            <br>
+            <span ng-click="convertVistDt('20200102')">컨버트비짓데이트</span>
+            <br>
+            <!-- <span ng-click="getTime('2020-01-01 13:30')">이곳</span>
             <br>
             <span ng-show="cutStringDate('2020-01-01 13:30')">여기</span>
             <br>
             <span>{{getTime('2020-01-01 17:30') | date:'HH:mm' }} 이렇게 변환</span>
-            <br> -->
+            <br>
             <span ng-click="checkYear()">년도 체크</span>
+            <br>
+            <span ng-class="roomColor(-1)">{{ roomColor(-1) }}</span>
+            <br> -->
+            <select ng-model="purposes.name[1]" ng-options="item.name for item in purposes"></select>
             <span class="day"></span>
             <div class="schedule">
                 <div ng-repeat="list in dateList">

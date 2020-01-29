@@ -15,6 +15,20 @@ test.controller('TestCtrl', function ($scope) {
         return count;
     }
 
+    $scope.changeForm = function(data) {
+		
+		var year = data.substring(0, 4);
+		var month = data.substring(4, 6);
+		var day = data.substring(6,8);
+		
+        var getDate = year +'-'+ month +'-'+ day;
+        
+        console.log(getDate);
+		
+		return getDate;
+		
+	}
+
     $scope.checkDate = [{
             day: '20200120',
             time: '09:30'

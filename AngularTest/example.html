@@ -17,10 +17,15 @@
 <body ng-app="example">
     <div ng-controller="TestCtrl">
         <div>
-            <div ng-repeat="list in checkDate | limitTo:3">
-                <span ng-if="list.day == '20200120'">{{list.time}} {{list.day}}</span ng-if="list.day == '20200120'">
+            <div style="overflow: hidden; height: 75px;">
+                <div ng-repeat="list in checkDate">
+                    <span ng-if="list.day == '20200120'">{{list.time}} {{list.day}}</span>
+                </div>
             </div>
             <span ng-if="checkIndex('20200120') > 3">+ {{checkIndex('20200120')-3}}</span>
+
+            <br>
+            <span ng-click="changeForm('20200127')">{{changeForm('20200127')}}</span>
         </div>
     </div>
 

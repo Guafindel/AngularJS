@@ -17,8 +17,8 @@
 <body ng-app="example">
     <div ng-controller="TestCtrl">
         <div>
-            <div style="overflow: hidden; height: 75px;">
-                <div ng-repeat="list in checkDate">
+            <div>
+                <div ng-repeat="list in checkDate | filter: {day: '20200120'} | limitTo:3">
                     <span ng-if="list.day == '20200120'">{{list.time}} {{list.day}}</span>
                 </div>
             </div>

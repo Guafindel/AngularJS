@@ -176,28 +176,29 @@ test.controller('TestCtrl', function ($scope) {
     $scope.restoreTime = function (data) {
 
         var strTime = data.split(' ');
-
-        var getTime = strTime[1].split(':');
+        console.log(strTime)
 
         var time;
         var hour;
 
-        hour = parseInt(getTime[0]);
+        hour = parseInt(strTime[1]);
 
         if (strTime[0] == '오전') {
             if (hour < 10) {
-                time = ('0' + getTime[0]) + getTime[1];
+                time = ('0' + strTime[1]) + strTime[3];
             } else {
-                time = getTime[0] + getTime[1];
+                time = strTime[1] + strTime[3];
             }
 
         } else if (strTime[0] == '오후') {
             if ((hour + 12) == 24) {
-                time = getTime[0] + getTime[1];
+                time = strTime[1] + strTime[3];
             } else {
-                time = (parseInt(getTime[0]) + 12) + getTime[1];
+                time = (parseInt(strTime[1]) + 12) + strTime[3];
             }
         }
+
+        console.log(time);
 
         return time;
 

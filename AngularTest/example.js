@@ -2,6 +2,8 @@ var test = angular.module('example', []);
 
 test.controller('TestCtrl', function ($scope) {
 
+    var date = new Date();
+
     $scope.checkIndex = function (data) {
 
         var count = 0;
@@ -204,4 +206,86 @@ test.controller('TestCtrl', function ($scope) {
 
     }
 
+    function convertCheck(data) {
+
+        var hour = data.substring(0, 2); 
+        var minute = data.substring(2,4);
+
+        var result = new Date(0, 0, 0, hour, minute, 0);
+
+        return result
+    }
+
+    $scope.getTime = convertCheck('1130');
+
+    $scope.restoreTime = getRestoreTime($scope.getTime);
+
+    $scope.strTime = $scope.getTime.toString();
+
+    function getRestoreTime(data) {
+
+        var convertString = data.toString();
+
+        return convertString.substring(16, 18) + convertString.substring(19, 21);
+
+    }
+
+    /**
+	 * 오전, 오후 체크하고 12H 시간 형식으로 변환
+	 */
+	/*function convertTime(originTime) {
+		
+		var getHour = originTime.substring(0, 2);
+		var getMinute = originTime.substring(2, 4);
+		
+		var numHour = parseInt(getHour);
+		
+		if(numHour < 12) {
+			var ampm = '오전';
+		} else {
+			var ampm = '오후';
+		}
+		
+		if(numHour == 12) {
+			var convertHour = numHour;
+		} else {
+			var convertHour = numHour%12;
+		}
+		
+		var time = ampm + ' ' +convertHour + ' : ' + getMinute;
+		
+		return time;
+		
+	} */
+	
+	/**
+	 * 형식 바뀐 시간을 원래 형태로 변환
+	 */
+	/*function restoreTime(originTime) {
+
+        var strTime = originTime.split(' ');
+
+        var time;
+        var hour;
+
+        hour = parseInt(strTime[1]);
+
+        if (strTime[0] == '오전') {
+            if (hour < 10) {
+                time = ('0' + strTime[1]) + strTime[3];
+            } else {
+                time = strTime[1] + strTime[3];
+            }
+
+        } else if (strTime[0] == '오후') {
+            if ((hour + 12) == 24) {
+                time = strTime[1] + strTime[3];
+            } else {
+                time = (parseInt(strTime[1]) + 12) + strTime[3];
+            }
+        }
+
+        return time;
+
+    };*/
 });

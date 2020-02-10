@@ -48,7 +48,20 @@
             <input type="time" ng-model="getTime">
             <br><br>
             <div>{{strTime}}</div>
-            <br>{{restoreTime}}<br>
+            <br><br>
+            <div>{{restoreTime}}<div>
+            <br><br>
+            <input type="button" value="사용가능?불가능?"></input>
+            <br><br>
+            <span ng-click="divDate('202001')">확인</span>
+            <span>{{setDate}}</span>
+            <span>{{setDate2}}</span>
+
+            <span>{{check1 == check2}}</span>
+            <span>{{check2}}</span>
+
+            <span>{{getYear('202001')}}</span>
+            <span>{{getMonth('202001')}}</span>
 
         </div>
     </div>

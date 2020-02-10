@@ -288,4 +288,34 @@ test.controller('TestCtrl', function ($scope) {
         return time;
 
     };*/
+
+    $scope.divDate = function(data) {
+
+        var year = data.substring(0, 4);
+        var month = data.substring(4, 2);
+
+        var result = [year, month];
+        console.log(result);
+
+        console.log(result[0]);
+        console.log(result[1]);
+
+        return [year, month];
+    }
+
+    $scope.setDate = date.setFullYear(2019, 09);
+    $scope.setDate2 = date.setFullYear(2019, 09);
+
+    $scope.check1 = date.setFullYear(2020, 02);
+    $scope.check2 = date.setFullYear(2020, 2);
+
+
+    $scope.getYear = function(data) {
+        return parseInt(data.substring(0,4))
+    }
+
+    $scope.getMonth = function(data) {
+        return parseInt(data.substring(4,6))
+    }
+
 });

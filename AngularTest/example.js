@@ -318,4 +318,16 @@ test.controller('TestCtrl', function ($scope) {
         return parseInt(data.substring(4,6))
     }
 
+    $scope.checkStyle = {
+        isOpen : false
+    }
+
+    $scope.changeOpen = function() {
+        if($scope.checkStyle.isOpen == true) {
+            $scope.checkStyle.isOpen = false;
+        } else {
+            $scope.checkStyle.isOpen = true;
+        }
+    }
+
 });

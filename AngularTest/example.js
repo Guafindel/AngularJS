@@ -330,4 +330,28 @@ test.controller('TestCtrl', function ($scope) {
         }
     }
 
+    $scope.checkNum = function(data) {
+        var strNum = data.substring(0,4);
+        var getNum = parseInt(strNum);
+
+        console.log(typeof getNum);
+        return getNum
+    }
+
+    function removeHyphen(data) {
+		
+		var num = 0;
+		
+		num = data.replace(/(^02.{0}|^01.{1}|[0-9]{3})([0-9]+)([0-9]{4})/,"$1-$2-$3");
+
+		return num
+    } 
+    
+    $scope.removeHyphen = function(data) {
+
+        data = data.replace(/\-/g,''); //특정문자 제거
+
+        return data;
+    }
+
 });

@@ -70,6 +70,15 @@
             <span>{{checkNum('1830')}}</span>
             <br><br><br>
             <span>{{removeHyphen('010-7183-1818')}}</span>
+            <br><br><br>
+            <span>{{compareDate('20200203','20200202')}}</span>
+            <br><br><br>
+            <span ng-click="fn_reset()">초기화</span>
+            <br><br><br>
+            <span ng-click="fn_splitGbn('01')">스플릿테스트</span>
+            <span ng-click="fn_splitGbn('01^01')">스플릿테스트2</span>
+            <span ng-click="fn_splitGbn('01^01^001')">스플릿테스트3</span>
+            <span ng-click="fn_splitGbn('01^01^001^004')">스플릿테스트4</span>
         </div>
     </div>
 

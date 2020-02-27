@@ -354,4 +354,53 @@ test.controller('TestCtrl', function ($scope) {
         return data;
     }
 
+    $scope.compareDate = function(data1, data2) {
+
+        if(data1 < data2) {
+            return '<'
+        } else if(data1 > data2) {
+            return '>'
+        } else if(data1 == data2) {
+            return '='
+        }
+    }
+
+    $scope.fn_reset = function() {
+        console.log($scope.checkDate);
+
+        $scope.checkDate = "";
+
+        console.log($scope.checkDate);
+
+        console.log($scope.checkDate);
+    }
+
+    $scope.fn_splitGbn = function(data) {
+
+        var cd01 = "";
+        var cd02 = "";
+        var cd03 = "";
+        var cd04 = "";
+        var getCode = data.split('^');
+        var checkNum = getCode.length;
+
+        cd01 = getCode[0];
+        if(checkNum > 3) {
+            cd02 = getCode[1];
+            cd03 = getCode[2];
+            cd04 = getCode[3];
+            console.log(cd01, cd02, cd03, cd04);
+        } else if(checkNum >2) {
+            cd02 = getCode[1];
+            cd03 = getCode[2];
+            console.log(cd01, cd02, cd03);
+        } else if(checkNum > 1) {
+            cd02 = getCode[1];
+            console.log(cd01, cd02);
+        } else {
+            console.log(cd01);
+        }
+        
+    }
+
 });

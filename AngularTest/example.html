@@ -79,6 +79,18 @@
             <span ng-click="fn_splitGbn('01^01')">스플릿테스트2</span>
             <span ng-click="fn_splitGbn('01^01^001')">스플릿테스트3</span>
             <span ng-click="fn_splitGbn('01^01^001^004')">스플릿테스트4</span>
+            <br><br><br>
+            <span ng-click="checkSpace('아맞습니다.')">공백 체크</span>
+            <br><br><br>
+            <span ng-click="fn_saveData()">if문 탈출 체크</span>
+            <br><br><br>
+            <span ng-click="fn_makeRadio('OK,양호^NG,불량^NA,해당없음')">Radio 만들기</span>
+            <br><br><br>
+            <div ng-repeat="list in makeParams">
+                <input ng-model="list.KEY" type="radio" id="{{$index}}" name="{{$index}}">
+                <label for="{{$index}}">{{list.VALUE}}</label>
+            </div>
+      
         </div>
     </div>
 

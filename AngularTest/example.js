@@ -369,7 +369,7 @@ test.controller('TestCtrl', function ($scope) {
         console.log($scope.checkDate);
 
         $scope.checkDate = "";
-
+        
         console.log($scope.checkDate);
 
         console.log($scope.checkDate);
@@ -402,5 +402,109 @@ test.controller('TestCtrl', function ($scope) {
         }
         
     }
+
+    $scope.checkSpace = function(str) {
+        if(str.search(/\s/) != -1 || str == "") {
+            console.log("true");
+            return true;
+        } else {
+            console.log("false");
+            return false;
+        }
+    }
+
+    function checkSpace2(str) {
+        if(str.search(/\s/) != -1 || str == "") {
+            console.log("true");
+            return true;
+        } else {
+            console.log("false");
+            return false;
+        }
+    }
+
+    $scope.fn_saveData = function() {
+		
+		if(confirm("저장 하시겠습니까?")) {
+			
+			if(checkSpace2('hdf ')) {
+				
+				alert("표준업무를 입력 해주세요");
+            
+                return;
+			} else {
+                alert("통과");
+            }
+			if(checkSpace2('')) {
+				
+				alert("협력업체를 입력 해주세요");
+                
+                return false;
+			} else {
+                alert("");
+            }
+			if(checkSpace2('jong')) {
+				
+                alert("장소를 등록 해주세요");
+                
+                return false;
+			}else {
+                alert("통과");
+            }
+			
+			
+			alert("성공해서 넘어왔습니다.");
+        } else {
+            alert("완전넘어갔습니다.");
+            return false;
+        }
+    };
+    $scope.makeParams = [];
+    
+    $scope.fn_makeRadio = function(str) {
+        var radioName = str.split('^');
+        //console.log(radioName);
+        for(var i = 0; i < radioName.length; i++)  {
+            radioName[i] = radioName[i].split(',');
+           //console.log(radioName[i].length);
+            radioName[i].CD = radioName[i][0];
+            radioName[i].CD_NM = radioName[i][1];
+            radioName[i].shift(0);
+            radioName[i].shift(1);
+         
+        }
+        for(var i = 0; i < radioName.length; i++) {
+            $scope.makeParams.push(radioName[i]);
+        }
+        
+        
+        console.log($scope.makeParams);
+       return $scope.makeParams;
+    }
+
+    //$scope.fn_makeRadio('OK,양호^NG,불량^NA,해당없음');
+
+
+    /**
+* 문자 Split , ^
+*/
+function ufn_Opt(text){
+	var list = [];
+	
+	if(text != undefined && text != ''){
+        var temp1 = text.split(",");
+        for(var i = 0 ; i < temp1.length ; i++){
+            var temp2 = temp1[i].split("^");
+            list.push({"KEY" : temp2[0], "VALUE" : temp2[1]});
+        }
+    }
+	
+	return list;
+}
+
+$scope.makeParams = ufn_Opt('OK^양호,NG^불량,NA^해당없음');
+
+console.log(ufn_Opt('OK^양호,NG^불량,NA^해당없음'));
+
 
 });

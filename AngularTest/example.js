@@ -506,5 +506,127 @@ $scope.makeParams = ufn_Opt('OK^양호,NG^불량,NA^해당없음');
 
 console.log(ufn_Opt('OK^양호,NG^불량,NA^해당없음'));
 
+const ufn_Date = {
+    addZero : function(i) {
+        if(i < 10) {
+            i = "0" + i;
+        }
+        return i;
+    },
+    getDecember : function(i) {
+        if(i == "00") {
+            i = "12"
+        }
+        return i;
+    },
+    getNowYearMonth : function() {
+        const now = new Date();
+        const yyyy = this.addZero(now.getFullYear());
+        const mm = this.addZero(now.getMonth() + 1);
+        return yyyy + mm;
+    },
+    getNowYear : function() {
+        const now = new Date();
+        const yyyy = this.addZero(now.getFullYear());
+        return yyyy+"";
+    },
+    getNowMonth : function() {
+        const now = new Date();
+        const mm = this.addZero(now.getMonth() + 1);
+        return mm+"";
+    }, 
+    getOneMonthAgo : function(){
+        return String(new Date().getMonth())[1]?String(new Date().getMonth()):'0'+String(new Date().getMonth());
+    }, 
+    getOneMonthLater : function(){
+        return String(new Date().getMonth() + 2)[1]?String(new Date().getMonth() + 2):'0'+String(new Date().getMonth() + 2);
+    },
+    getNextYearMonth : function(separator){
+        if(separator == undefined) separator = "";
+        var nextDate = new Date(new Date().setMonth(new Date().getMonth()+1));
+        var yyyy = this.addZero(nextDate.getFullYear());
+        var mm = this.addZero(nextDate.getMonth() + 1);
+        return yyyy + separator + mm + separator;
+    },
+    getAgoYearMonth : function(separator) {
+        if(separator == undefined) separator = "";
+        const nextDate = new Date(new Date().setMonth(new Date().getMonth()));
+        let yyyy = this.addZero(nextDate.getFullYear());
+        let mm = this.addZero(nextDate.getMonth());
+        mm = this.getDecember(mm);
+        if(mm == "12") {
+            yyyy--;
+        }
+        return yyyy + separator + mm + separator;
+    },
+    getAgo01YearMonth : function(separator) {
+        if(separator == undefined) separator = "";
+        const nextDate = new Date(new Date().setMonth(new Date().getMonth() - 1));
+        let yyyy = this.addZero(nextDate.getFullYear());
+        let mm = this.addZero(nextDate.getMonth());
+        mm = this.getDecember(mm);
+        if(mm == "12") {
+            yyyy--;
+        }
+        return yyyy + separator + mm + separator;
+    },
+    getAgo02YearMonth : function(separator) {
+        if(separator == undefined) separator = "";
+        const nextDate = new Date(new Date().setMonth(new Date().getMonth() - 2));
+        let yyyy = this.addZero(nextDate.getFullYear());
+        let mm = this.addZero(nextDate.getMonth());
+        mm = this.getDecember(mm);
+        if(mm == "12") {
+            yyyy--;
+        }
+        return yyyy + separator + mm + separator;
+    }
+};
+
+function getAgoYearMonth(separator, index) {
+    if(separator == undefined) separator = "";
+    if(index == undefined) index = 0;
+    const nextDate = new Date(new Date().setMonth(new Date().getMonth() - index));
+    let yyyy = ufn_Date.addZero(nextDate.getFullYear());
+    let mm = ufn_Date.addZero(nextDate.getMonth());
+    mm = ufn_Date.getDecember(mm);
+    if(mm == "12") {
+        yyyy--;
+    }
+    return yyyy + separator + mm + separator;
+}
+
+function getKey(strNum) {
+    const a = strNum.substring(0, 4);
+    const b = strNum.substring(4, 6);
+
+    return a + '년' + b + '월';
+}
+
+$scope.yearMonth = [
+    {
+        KEY : getKey(ufn_Date.getNowYearMonth()),
+        VAL : ufn_Date.getNowYearMonth()
+    },
+    {
+        KEY : getKey(getAgoYearMonth()),
+        VAL : getAgoYearMonth()
+    },
+    {
+        KEY : getKey(getAgoYearMonth("", 1)),
+        VAL : getAgoYearMonth("", 1)
+    },
+    {
+        KEY : getKey(getAgoYearMonth("", 2)),
+        VAL : getAgoYearMonth("", 2)
+    },
+    {
+        KEY : getKey(getAgoYearMonth("", 3)),
+        VAL : getAgoYearMonth("", 3)
+    }
+];
+
+console.log($scope.yearMonth[0]);
+
 
 });

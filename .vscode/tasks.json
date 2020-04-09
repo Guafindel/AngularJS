@@ -1,0 +1,21 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "taskName": "iexplore",
+            "type": "process",
+            "command": "iexplore.exe",
+            "windows": {
+                "command": "C:\\Program Files (x86)\\Internet Explorer\\iexplore.exe"
+            },
+            "args": [
+                "${file}"
+            ],
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}
